@@ -1,0 +1,9 @@
+package tt.kvlad.tgpt.service.update;
+
+import org.telegram.telegrambots.meta.api.objects.Update;
+
+public interface UpdateHandler {
+    void handleUpdate(Update update);
+
+    UpdateStrategyType getType();
+}

@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-context-table
+      author: kvlad
+      changes:
+        - createTable:
+            tableName: contexts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: context_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: telegram_chat_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_context_chat_id
+                    referencedTableName: telegram_chats
+                    referencedColumnNames: id
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: add-fk-target-context-telegram-chat
+      author: kvlad
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: telegram_chats
+            baseColumnNames: target_context_id
+            constraintName: fk_chat_target_context_id
+            referencedTableName: contexts
+            referencedColumnNames: id

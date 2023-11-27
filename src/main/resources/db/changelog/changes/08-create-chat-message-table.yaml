@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-chat-message-table-table
+      author: kvlad
+      changes:
+        - createTable:
+            tableName: chat_messages
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: text
+                  type: varchar(100000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: signature
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: creation_time
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: context_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_message_context_id
+                    referencedTableName: contexts
+                    referencedColumnNames: id
+              - column:
+                  name: chat_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_message_chat_id
+                    referencedTableName: telegram_chats
+                    referencedColumnNames: id
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
