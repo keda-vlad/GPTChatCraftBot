@@ -22,7 +22,8 @@ public class StartCommand implements ChatMessageHandler {
             You're now connected with the power of GPT-3.5.
             Here are some commands that might come in handy:
                         
-            /new [chat_name]: Create a new chat. For example, /new CodingEnthusiasts.
+            /new [chat_name]: Create a new chat.
+            For example: "/new CodingEnthusiasts".
             /chats: Get a list of available chats.
             /leave: Leave the current chat.
             
