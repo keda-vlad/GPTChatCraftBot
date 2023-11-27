@@ -23,11 +23,13 @@ services:
       database:
         condition: service_healthy
     build: .
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+      - $DEBUG_PORT
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:$POSTGRES_DOCKER_PORT/$POSTGRES_DB
       SPRING_DATASOURCE_USERNAME: $POSTGRES_USER
       SPRING_DATASOURCE_PASSWORD: $POSTGRES_PASSWORD
-
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: "org.hibernate.dialect.PostgreSQLDialect"
       GPT_TOKEN: $GPT_TOKEN
       GPT_VERSION: $GPT_VERSION
@@ -36,6 +38,3 @@ services:
       TG_NAME: $TG_NAME
       JWT_SECRET: $JWT_SECRET
       JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:$DEBUG_PORT
-    ports:
-      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
-      - $DEBUG_PORT
