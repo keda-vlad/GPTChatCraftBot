@@ -9,5 +9,4 @@ class TgptApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

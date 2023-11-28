@@ -24,6 +24,9 @@ public class StartCommand implements ChatMessageHandler {
                         
             /new [chat_name]: Create a new chat.
             For example: "/new CodingEnthusiasts".
+            
+            !!!Note that you have a context limit of 4!!!
+            
             /chats: Get a list of available chats.
             /leave: Leave the current chat.
             

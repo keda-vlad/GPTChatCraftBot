@@ -1,7 +1,6 @@
 package tt.kvlad.tgpt.service.chat.impl;
 
 import java.util.List;
-import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,14 +29,6 @@ public class TelegramChatServiceImpl implements TelegramChatService {
         return telegramChatRepository.getByChatIdWithAllContexts(chatId).orElseThrow(
                         () -> new EntityNotFoundException("Can't find chat by chatId = " + chatId)
                 );
-    }
-
-    public boolean isInContext(Long chatId, String contextName) {
-        TelegramChat chat = telegramChatRepository.getByChatIdWithAllContexts(chatId).orElseThrow(
-                () -> new EntityNotFoundException("Can't find chat by chatId: " + chatId)
-        );
-        return chat.getContexts().stream()
-                .anyMatch(context -> Objects.equals(context.getName(), contextName));
     }
 
     @Override

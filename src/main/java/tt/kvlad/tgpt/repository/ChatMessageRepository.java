@@ -12,7 +12,7 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> 
               WHERE cm.context.id = :id
               ORDER BY cm.creationTime DESC
               """)
-    List<ChatMessage> findByContextIdOrderByCreationTimeDesc(Long id, Pageable pageable);
+    List<ChatMessage> findLatestByContextId(Long id, Pageable pageable);
 
     List<ChatMessage> getAllByContextId(Long id, Pageable pageable);
 

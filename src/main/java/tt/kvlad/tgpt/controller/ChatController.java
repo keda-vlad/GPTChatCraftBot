@@ -32,7 +32,7 @@ public class ChatController {
     @GetMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Get all chats")
-    public List<ChatDto> getAllChats(Pageable pageable) {
+    public List<ChatDto> getAll(Pageable pageable) {
         return telegramChatService.getAll(pageable);
     }
 
@@ -46,7 +46,7 @@ public class ChatController {
     @GetMapping("/{id}/messages")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Get all chat messages by chat id.")
-    public List<MessageDto> getById(@PathVariable Long id, Pageable pageable) {
+    public List<MessageDto> getLog(@PathVariable Long id, Pageable pageable) {
         return messageService.getAllByChatId(id, pageable);
     }
 

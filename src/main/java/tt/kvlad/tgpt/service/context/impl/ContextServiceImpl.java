@@ -1,11 +1,11 @@
 package tt.kvlad.tgpt.service.context.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tt.kvlad.tgpt.dto.context.ContextDtoWithoutMessages;
+import tt.kvlad.tgpt.exception.EntityNotFoundException;
 import tt.kvlad.tgpt.mapper.ContextMapper;
 import tt.kvlad.tgpt.model.Context;
 import tt.kvlad.tgpt.model.TelegramChat;

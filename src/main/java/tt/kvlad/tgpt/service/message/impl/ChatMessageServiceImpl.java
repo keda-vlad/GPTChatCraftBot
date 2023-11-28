@@ -42,7 +42,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 
     @Override
     public List<MessageDto> findLatestByContextId(Long id, Pageable pageable) {
-        return chatMessageRepository.findByContextIdOrderByCreationTimeDesc(id, pageable).stream()
+        return chatMessageRepository.findLatestByContextId(id, pageable).stream()
                 .map(messageMapper::toDto)
                 .toList();
     }
